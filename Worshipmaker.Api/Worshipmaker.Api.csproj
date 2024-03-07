@@ -4,10 +4,16 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <InvariantGlobalization>true</InvariantGlobalization>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Worshipmaker.Common\Worshipmaker.Common.csproj" />
+    <ProjectReference Include="..\WorshipMaker.Data\WorshipMaker.Data.csproj" />
   </ItemGroup>
 
 </Project>
