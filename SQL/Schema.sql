@@ -1,0 +1,424 @@
+CREATE TABLE [EventCategories] (
+	[EventCategoryID] VARCHAR(36) NOT NULL,
+	[OrganizationID] VARCHAR(36) NOT NULL,
+	[Name] NVARCHAR(100) NULL,
+	[DateCreated] DATETIME NOT NULL,
+	[DateModified] DATETIME NOT NULL,
+PRIMARY KEY ([EventCategoryID])) 
+GO
+
+CREATE TABLE [Events] (
+	[EventID] VARCHAR(36) NOT NULL,
+	[OrganizationID] VARCHAR(36) NOT NULL,
+	[EventCategoryID] VARCHAR(36) NULL,
+	[StartDate] DATETIME NOT NULL,
+	[EndDate] DATETIME NOT NULL,
+	[Name] NVARCHAR(100) NULL,
+	[Location] NVARCHAR(100) NULL,
+	[Description] NVARCHAR(MAX) NULL,
+	[CustomProperties] NVARCHAR(MAX) NULL,
+	[DateCreated] DATETIME NOT NULL,
+	[DateModified] DATETIME NOT NULL,
+PRIMARY KEY ([EventID]))
+GO
+
+CREATE TABLE [MessageComments] (
+	[MessageCommentID] VARCHAR(36) NOT NULL,
+	[MessageID] VARCHAR(36) NOT NULL,
+	[AuthorUserID] VARCHAR(36) NOT NULL,
+	[Body] NVARCHAR(MAX) NULL,
+	[DatePosted] DATETIME NOT NULL,
+PRIMARY KEY ([MessageCommentID]))
+GO
+
+CREATE TABLE [MessageUsers] (
+	[MessageUserID] VARCHAR(36) NOT NULL,
+	[MessageID] VARCHAR(36) NOT NULL,
+	[UserID] VARCHAR(36) NOT NULL,
+	[Read] BIT NOT NULL,
+	[Archived] BIT NOT NULL,
+PRIMARY KEY ([MessageUserID]))
+GO
+
+CREATE TABLE [Messages] (
+	[MessageID] VARCHAR(36) NOT NULL,
+	[AuthorUserID] VARCHAR(36) NOT NULL,
+	[Subject] NVARCHAR(250) NULL,
+	[Body] NVARCHAR(MAX) NULL,
+	[DatePosted] DATETIME NOT NULL,
+PRIMARY KEY ([MessageID]))
+GO
+
+CREATE TABLE [Organizations] (
+	[OrganizationID] VARCHAR(36) NOT NULL,
+	[Name] NVARCHAR(100) NULL,
+	[Address] NVARCHAR(MAX) NULL,
+	[URL] NVARCHAR(100) NULL,
+	[LoGO] NVARCHAR(100) NULL,
+	[CustomProperties] NVARCHAR(MAX) NULL,
+	[Active] BIT NOT NULL,
+	[DateCreated] DATETIME NOT NULL,
+	[DateModified] DATETIME NOT NULL,
+	[DateDeleted] DATETIME NULL,
+PRIMARY KEY ([OrganizationID]))
+GO
+
+CREATE TABLE [PermissionRoles] (
+	[PermissionRoleID] VARCHAR(36) NOT NULL,
+	[PermissionID] VARCHAR(36) NOT NULL,
+	[RoleID] VARCHAR(36) NOT NULL,
+PRIMARY KEY ([PermissionRoleID]))
+GO
+
+CREATE TABLE [Permissions] (
+	[PermissionID] VARCHAR(36) NOT NULL,
+	[OrganizationID] VARCHAR(36) NOT NULL,
+	[Name] NVARCHAR(100) NULL,
+	[Description] NVARCHAR(MAX) NULL,
+	[DateCreated] DATETIME NOT NULL,
+	[DateModified] DATETIME NOT NULL,
+PRIMARY KEY ([PermissionID]))
+GO
+
+CREATE TABLE [Roles] (
+	[RoleID] VARCHAR(36) NOT NULL,
+	[Name] NVARCHAR(100) NOT NULL,
+	[DisplayName] NVARCHAR(100) NULL,
+	[Description] NVARCHAR(MAX) NULL,
+PRIMARY KEY ([RoleID]))
+GO
+
+CREATE TABLE [ServiceItems] (
+	[ServiceItemID] VARCHAR(36) NOT NULL,
+	[ServiceID] VARCHAR(36) NOT NULL,
+	[SongID] VARCHAR(36) NULL,
+	[ServiceItemType] INTEGER NOT NULL,
+	[Name] NVARCHAR(250) NULL,
+	[AssignedTo] NVARCHAR(100) NULL,
+	[TimeSeconds] INTEGER NULL,
+	[Description] NVARCHAR(MAX) NULL,
+	[CustomProperties] NVARCHAR(MAX) NULL,
+	[OrderNumber] INTEGER NOT NULL,
+	[DateCreated] DATETIME NOT NULL,
+	[DateModified] DATETIME NOT NULL,
+PRIMARY KEY ([ServiceItemID]))
+GO
+
+CREATE TABLE [Services] (
+	[ServiceID] VARCHAR(36) NOT NULL,
+	[OrganizationID] VARCHAR(36) NOT NULL,
+	[ServiceDate] DATETIME NOT NULL,
+	[Name] NVARCHAR(100) NULL,
+	[Description] NVARCHAR(MAX) NULL,
+	[CustomProperties] NVARCHAR(MAX) NULL,
+	[DateCreated] DATETIME NOT NULL,
+	[DateModified] DATETIME NOT NULL,
+PRIMARY KEY ([ServiceID]))
+GO
+
+CREATE TABLE [Sessions] (
+	[SessionID] VARCHAR(36) NOT NULL,
+	[OrganizationID] INTEGER NOT NULL,
+	[UserID] INTEGER NOT NULL,
+	[FirstName] NVARCHAR(100) NULL,
+	[LastName] NVARCHAR(100) NULL,
+	[Email] NVARCHAR(100) NULL,
+	[Organization] NVARCHAR(MAX) NULL,
+	[AvailableRoles] NVARCHAR(MAX) NULL,
+	[IPAddress] VARCHAR(45) NULL,
+	[UserAgent] VARCHAR(65) NULL,
+	[Active] BIT NOT NULL,
+	[DateAuthenticated] DATETIME NOT NULL,
+	[DateLastSeen] DATETIME NOT NULL,
+PRIMARY KEY ([SessionID])) 
+GO
+
+CREATE TABLE [SongCategories] (
+	[SongCategoryID] VARCHAR(36) NOT NULL,
+	[OrganizationID] VARCHAR(36) NOT NULL,
+	[Name] NVARCHAR(100) NULL,
+	[DateCreated] DATETIME NOT NULL,
+	[DateModified] DATETIME NOT NULL,
+PRIMARY KEY ([SongCategoryID]))
+GO
+
+CREATE TABLE [MediaAssets] (
+	[MediaAssetID] VARCHAR(36) NOT NULL,
+	[OrganizationID] VARCHAR(36) NOT NULL,
+	[SongID] VARCHAR(36) NULL,
+	[Name] NVARCHAR(100) NULL,
+	[Filename] NVARCHAR(100) NULL,
+	[MimeType] NVARCHAR(50) NULL,
+	[SizeBytes] INTEGER NOT NULL,
+	[CustomProperties] NVARCHAR(MAX) NULL,
+	[DateCreated] DATETIME NOT NULL,
+	[DateModified] DATETIME NOT NULL,
+PRIMARY KEY ([MediaAssetID]))
+GO
+
+CREATE TABLE [Songs] (
+	[SongID] VARCHAR(36) NOT NULL,
+	[OrganizationID] VARCHAR(36) NOT NULL,
+	[SongCategoryID] VARCHAR(36) NULL,
+	[Name] NVARCHAR(100) NULL,
+	[Author] NVARCHAR(100) NULL,
+	[Artist] NVARCHAR(100) NULL,
+	[Copyright] NVARCHAR(100) NULL,
+	[CCLINumber] NVARCHAR(20) NULL,
+	[Chords] NVARCHAR(MAX) NULL,
+	[KeyOf] NVARCHAR(5) NULL,
+	[KeySignature] NVARCHAR(10) NULL,
+	[TimeSignature] NVARCHAR(5) NULL,
+	[Tempo] INTEGER NULL,
+	[TimeMinutes] INTEGER NULL,
+	[TimeSeconds] INTEGER NULL,
+	[Tags] NVARCHAR(250) NULL,
+	[Notes] NVARCHAR(MAX) NULL,
+	[Roadmap] NVARCHAR(MAX) NULL,
+	[CustomProperties] NVARCHAR(MAX) NULL,
+	[Active] BIT NOT NULL,
+	[DateCreated] DATETIME NOT NULL,
+	[DateModified] DATETIME NOT NULL,
+	[DateDeleted] DATETIME NULL,
+PRIMARY KEY ([SongID]))
+GO
+
+CREATE TABLE [Talents] (
+	[TalentID] VARCHAR(36) NOT NULL,
+	[OrganizationID] VARCHAR(36) NOT NULL,
+	[Name] NVARCHAR(100) NULL,
+	[DateCreated] DATETIME NOT NULL,
+	[DateModified] DATETIME NOT NULL,
+PRIMARY KEY ([TalentID]))
+GO
+
+CREATE TABLE [UserPermissions] (
+	[UserPermissionID] VARCHAR(36) NOT NULL,
+	[UserID] VARCHAR(36) NOT NULL,
+	[PermissionID] VARCHAR(36) NOT NULL,
+PRIMARY KEY ([UserPermissionID]))
+GO
+
+CREATE TABLE [UserTalents] (
+	[UserTalentID] VARCHAR(36) NOT NULL,
+	[UserID] VARCHAR(36) NOT NULL,
+	[TalentID] VARCHAR(36) NOT NULL,
+PRIMARY KEY ([UserTalentID]))
+GO
+
+CREATE TABLE [Users] (
+	[UserID] VARCHAR(36) NOT NULL,
+	[OrganizationID] VARCHAR(36) NOT NULL,
+	[FirstName] NVARCHAR(100) NULL,
+	[LastName] NVARCHAR(100) NULL,
+	[Email] NVARCHAR(100) NULL,
+	[Password] NVARCHAR(100) NULL,
+	[Address] NVARCHAR(MAX) NULL,
+	[Avatar] NVARCHAR(100) NULL,
+	[Biography] NVARCHAR(MAX) NULL,
+	[CustomProperties] NVARCHAR(MAX) NULL,
+	[Active] BIT NOT NULL,
+	[DateCreated] DATETIME NOT NULL,
+	[DateModified] DATETIME NOT NULL,
+	[DateDeleted] DATETIME NULL,
+PRIMARY KEY ([UserID]))
+GO
+
+CREATE TABLE [Teams] (
+	[TeamID] VARCHAR(36) NOT NULL,
+	[OrganizationID] VARCHAR(36) NOT NULL,
+	[Name] NVARCHAR(100) NULL,
+	[CustomProperties] NVARCHAR(MAX) NULL,
+	[DateCreated] DATETIME NOT NULL,
+	[DateModified] DATETIME NOT NULL,
+PRIMARY KEY ([TeamID]))
+GO
+
+CREATE TABLE [UserTeams] (
+	[UserTeamID] VARCHAR(36) NOT NULL,
+	[UserID] VARCHAR(36) NOT NULL,
+	[TeamID] VARCHAR(36) NOT NULL,
+PRIMARY KEY ([UserTeamID]))
+GO
+
+CREATE TABLE [Regions] (
+	[RegionID] VARCHAR(36) NOT NULL,
+	[CountryID] VARCHAR(36) NOT NULL,
+	[Name] NVARCHAR(100) NULL,
+	[Abbreviation] NVARCHAR(2) NULL,
+PRIMARY KEY ([RegionID]))
+GO
+
+CREATE TABLE [Countries] (
+	[CountryID] VARCHAR(36) NOT NULL,
+	[Name] NVARCHAR(100) NULL,
+	[Abbreviation] NVARCHAR(2) NULL,
+PRIMARY KEY ([CountryID]))
+GO
+
+CREATE TABLE [ServiceParticipants] (
+	[ServiceParticipantID] VARCHAR(36) NOT NULL,
+	[ServiceID] VARCHAR(36) NOT NULL,
+	[UserID] VARCHAR(36) NOT NULL,
+	[Role] NVARCHAR(50) NULL,
+	[DateEmailSent] DATETIME NULL,
+	[ResponseType] INTEGER NULL,
+	[DateResponse] DATETIME NULL,
+PRIMARY KEY ([ServiceParticipantID]))
+GO
+
+CREATE TABLE [ApplicationEvents] (
+	[ApplicationEventID] VARCHAR(36) NOT NULL,
+	[SessionID] VARCHAR(36) NOT NULL,
+	[LogLevel] INTEGER NOT NULL,
+	[Message] NVARCHAR(MAX) NULL,
+	[StackTrace] NVARCHAR(MAX) NULL,
+	[DateEvent] DATETIME NOT NULL,
+PRIMARY KEY ([ApplicationEventID]))
+GO
+
+CREATE TABLE [EmailTemplates] (
+	[ApplicationEventID] VARCHAR(36) NOT NULL,
+	[OrganizationID] VARCHAR(36) NULL,
+	[Subject] NVARCHAR(250) NULL,
+	[Body] NVARCHAR(MAX) NULL,
+	[DateCreated] DATETIME NOT NULL,
+	[DateModified] DATETIME NOT NULL,
+PRIMARY KEY ([ApplicationEventID]))
+GO
+
+CREATE TABLE [ApplicationSettings] (
+	[ApplicationSettingID] VARCHAR(36) NOT NULL,
+	[OrganizationID] VARCHAR(36) NULL,
+	[SettingName] NVARCHAR(100) NULL,
+	[SettingValue] NVARCHAR(MAX) NULL,
+PRIMARY KEY ([ApplicationSettingID]))
+GO
+
+CREATE TABLE [BibleTranslations] (
+	[BibleTranslationID] VARCHAR(36) NOT NULL,
+	[Name] NVARCHAR(100) NULL,
+	[Abbreviation] NVARCHAR(20) NULL,
+PRIMARY KEY ([BibleTranslationID]))
+GO
+
+CREATE TABLE [BibleBooks] (
+	[BibleBookID] INTEGER NOT NULL,
+	[Name] NVARCHAR(100) NULL,
+	[Abbreviation] NVARCHAR(20) NULL,
+	[NewTestament] BIT NOT NULL,
+PRIMARY KEY ([BibleBookID]))
+GO
+
+CREATE TABLE [BibleVerses] (
+	[BibleVerseID] INTEGER NOT NULL,
+	[BibleBookID] INTEGER NOT NULL,
+	[Chapter] INTEGER NOT NULL,
+	[Verse] INTEGER NOT NULL,
+PRIMARY KEY ([BibleVerseID]))
+GO
+
+ALTER TABLE [Events] ADD FOREIGN KEY ([EventCategoryID]) REFERENCES [EventCategories] ([EventCategoryID]) ON UPDATE NO ACTION ON DELETE NO ACTION 
+GO
+
+ALTER TABLE [MessageUsers] ADD FOREIGN KEY ([MessageID]) REFERENCES [Messages] ([MessageID]) ON UPDATE NO ACTION ON DELETE NO ACTION 
+GO
+
+ALTER TABLE [MessageComments] ADD FOREIGN KEY ([MessageID]) REFERENCES [Messages] ([MessageID]) ON UPDATE NO ACTION ON DELETE NO ACTION 
+GO
+
+ALTER TABLE [Users] ADD FOREIGN KEY ([OrganizationID]) REFERENCES [Organizations] ([OrganizationID]) ON UPDATE NO ACTION ON DELETE NO ACTION 
+GO
+
+ALTER TABLE [Permissions] ADD FOREIGN KEY ([OrganizationID]) REFERENCES [Organizations] ([OrganizationID]) ON UPDATE NO ACTION ON DELETE NO ACTION 
+GO
+
+ALTER TABLE [Talents] ADD FOREIGN KEY ([OrganizationID]) REFERENCES [Organizations] ([OrganizationID]) ON UPDATE NO ACTION ON DELETE NO ACTION 
+GO
+
+ALTER TABLE [Songs] ADD FOREIGN KEY ([OrganizationID]) REFERENCES [Organizations] ([OrganizationID]) ON UPDATE NO ACTION ON DELETE NO ACTION 
+GO
+
+ALTER TABLE [SongCategories] ADD FOREIGN KEY ([OrganizationID]) REFERENCES [Organizations] ([OrganizationID]) ON UPDATE NO ACTION ON DELETE NO ACTION 
+GO
+
+ALTER TABLE [Events] ADD FOREIGN KEY ([OrganizationID]) REFERENCES [Organizations] ([OrganizationID]) ON UPDATE NO ACTION ON DELETE NO ACTION 
+GO
+
+ALTER TABLE [EventCategories] ADD FOREIGN KEY ([OrganizationID]) REFERENCES [Organizations] ([OrganizationID]) ON UPDATE NO ACTION ON DELETE NO ACTION 
+GO
+
+ALTER TABLE [Services] ADD FOREIGN KEY ([OrganizationID]) REFERENCES [Organizations] ([OrganizationID]) ON UPDATE NO ACTION ON DELETE NO ACTION 
+GO
+
+ALTER TABLE [Teams] ADD FOREIGN KEY ([OrganizationID]) REFERENCES [Organizations] ([OrganizationID]) ON UPDATE NO ACTION ON DELETE NO ACTION 
+GO
+
+ALTER TABLE [EmailTemplates] ADD FOREIGN KEY ([OrganizationID]) REFERENCES [Organizations] ([OrganizationID]) ON UPDATE NO ACTION ON DELETE NO ACTION 
+GO
+
+ALTER TABLE [ApplicationSettings] ADD FOREIGN KEY ([OrganizationID]) REFERENCES [Organizations] ([OrganizationID]) ON UPDATE NO ACTION ON DELETE NO ACTION 
+GO
+
+ALTER TABLE [MediaAssets] ADD FOREIGN KEY ([OrganizationID]) REFERENCES [Organizations] ([OrganizationID]) ON UPDATE NO ACTION ON DELETE NO ACTION 
+GO
+
+ALTER TABLE [UserPermissions] ADD FOREIGN KEY ([PermissionID]) REFERENCES [Permissions] ([PermissionID]) ON UPDATE NO ACTION ON DELETE NO ACTION 
+GO
+
+ALTER TABLE [PermissionRoles] ADD FOREIGN KEY ([PermissionID]) REFERENCES [Permissions] ([PermissionID]) ON UPDATE NO ACTION ON DELETE NO ACTION 
+GO
+
+ALTER TABLE [PermissionRoles] ADD FOREIGN KEY ([RoleID]) REFERENCES [Roles] ([RoleID]) ON UPDATE NO ACTION ON DELETE NO ACTION 
+GO
+
+ALTER TABLE [ServiceItems] ADD FOREIGN KEY ([ServiceID]) REFERENCES [Services] ([ServiceID]) ON UPDATE NO ACTION ON DELETE NO ACTION 
+GO
+
+ALTER TABLE [ServiceParticipants] ADD FOREIGN KEY ([ServiceID]) REFERENCES [Services] ([ServiceID]) ON UPDATE NO ACTION ON DELETE NO ACTION 
+GO
+
+ALTER TABLE [ApplicationEvents] ADD FOREIGN KEY ([SessionID]) REFERENCES [Sessions] ([SessionID]) ON UPDATE NO ACTION ON DELETE NO ACTION 
+GO
+
+ALTER TABLE [Songs] ADD FOREIGN KEY ([SongCategoryID]) REFERENCES [SongCategories] ([SongCategoryID]) ON UPDATE NO ACTION ON DELETE NO ACTION 
+GO
+
+ALTER TABLE [MediaAssets] ADD FOREIGN KEY ([SongID]) REFERENCES [Songs] ([SongID]) ON UPDATE NO ACTION ON DELETE NO ACTION 
+GO
+
+ALTER TABLE [ServiceItems] ADD FOREIGN KEY ([SongID]) REFERENCES [Songs] ([SongID]) ON UPDATE NO ACTION ON DELETE NO ACTION 
+GO
+
+ALTER TABLE [UserTalents] ADD FOREIGN KEY ([TalentID]) REFERENCES [Talents] ([TalentID]) ON UPDATE NO ACTION ON DELETE NO ACTION 
+GO
+
+ALTER TABLE [UserPermissions] ADD FOREIGN KEY ([UserID]) REFERENCES [Users] ([UserID]) ON UPDATE NO ACTION ON DELETE NO ACTION 
+GO
+
+ALTER TABLE [Messages] ADD FOREIGN KEY ([AuthorUserID]) REFERENCES [Users] ([UserID]) ON UPDATE NO ACTION ON DELETE NO ACTION 
+GO
+
+ALTER TABLE [MessageUsers] ADD FOREIGN KEY ([UserID]) REFERENCES [Users] ([UserID]) ON UPDATE NO ACTION ON DELETE NO ACTION 
+GO
+
+ALTER TABLE [MessageComments] ADD FOREIGN KEY ([AuthorUserID]) REFERENCES [Users] ([UserID]) ON UPDATE NO ACTION ON DELETE NO ACTION 
+GO
+
+ALTER TABLE [UserTalents] ADD FOREIGN KEY ([UserID]) REFERENCES [Users] ([UserID]) ON UPDATE NO ACTION ON DELETE NO ACTION 
+GO
+
+ALTER TABLE [UserTeams] ADD FOREIGN KEY ([UserID]) REFERENCES [Users] ([UserID]) ON UPDATE NO ACTION ON DELETE NO ACTION 
+GO
+
+ALTER TABLE [ServiceParticipants] ADD FOREIGN KEY ([UserID]) REFERENCES [Users] ([UserID]) ON UPDATE NO ACTION ON DELETE NO ACTION 
+GO
+
+ALTER TABLE [UserTeams] ADD FOREIGN KEY ([TeamID]) REFERENCES [Teams] ([TeamID]) ON UPDATE NO ACTION ON DELETE NO ACTION 
+GO
+
+ALTER TABLE [Regions] ADD FOREIGN KEY ([CountryID]) REFERENCES [Countries] ([CountryID]) ON UPDATE NO ACTION ON DELETE NO ACTION 
+GO
+
+ALTER TABLE [BibleVerses] ADD FOREIGN KEY ([BibleBookID]) REFERENCES [BibleBooks] ([BibleBookID]) ON UPDATE NO ACTION ON DELETE NO ACTION 
+GO
