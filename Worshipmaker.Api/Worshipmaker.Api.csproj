@@ -8,12 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Worshipmaker.Common\Worshipmaker.Common.csproj" />
-    <ProjectReference Include="..\WorshipMaker.Data\WorshipMaker.Data.csproj" />
   </ItemGroup>
 
 </Project>
