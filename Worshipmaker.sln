@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Worshipmaker.Web", "Worship
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Worshipmaker.Api", "Worshipmaker.Api\Worshipmaker.Api.csproj", "{EB6FEEF5-563B-4D84-9136-229FBD62A2BF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Worshipmaker.Common", "Worshipmaker.Common\Worshipmaker.Common.csproj", "{ED16B37D-B332-44BF-B063-853CE0185819}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{73A7A9CE-5BB8-440C-91F9-EE06DADA787C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL", "SQL", "{4AF9A353-F75D-418C-BFF9-161A2D45D8C3}"
@@ -16,7 +14,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL", "SQL", "{4AF9A353-F75
 		SQL\Schema.sql = SQL\Schema.sql
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Worshipmaker.Core", "Worshipmaker.Core\Worshipmaker.Core.csproj", "{3DE36AAB-B056-4792-A276-96089C5D0907}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Worshipmaker.Core", "Worshipmaker.Core\Worshipmaker.Core.csproj", "{3DE36AAB-B056-4792-A276-96089C5D0907}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,10 +30,6 @@ Global
 		{EB6FEEF5-563B-4D84-9136-229FBD62A2BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB6FEEF5-563B-4D84-9136-229FBD62A2BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB6FEEF5-563B-4D84-9136-229FBD62A2BF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ED16B37D-B332-44BF-B063-853CE0185819}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ED16B37D-B332-44BF-B063-853CE0185819}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ED16B37D-B332-44BF-B063-853CE0185819}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ED16B37D-B332-44BF-B063-853CE0185819}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3DE36AAB-B056-4792-A276-96089C5D0907}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3DE36AAB-B056-4792-A276-96089C5D0907}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3DE36AAB-B056-4792-A276-96089C5D0907}.Release|Any CPU.ActiveCfg = Release|Any CPU

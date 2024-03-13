@@ -1,4 +1,4 @@
-﻿namespace Worshipmaker.Common.Music
+﻿namespace Worshipmaker.Core.Music
 {
     public class ChordsheetLine
     {

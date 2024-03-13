@@ -1,4 +1,4 @@
-﻿namespace Worshipmaker.Common
+﻿namespace Worshipmaker.Core
 {
     public enum ChordsheetLineType
     {

@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Worshipmaker.Common\Worshipmaker.Common.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Helpers\" />
   </ItemGroup>
 

@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace Worshipmaker.Common.Music
+namespace Worshipmaker.Core.Music
 {
     public static class Chordsheet
     {
@@ -28,13 +28,14 @@ namespace Worshipmaker.Common.Music
         public static List<string> GetStanzaLines(string chordsheetText)
         {
             List<string> chordsheetStanzaLines = new List<string>();
-            foreach (ChordsheetLine chordsheetLine in GetLines(chordsheetText))
-            {
-                if (chordsheetLine.LineType == ChordsheetLineType.Stanza)
-                {
-                    chordsheetStanzaLines.Add(chordsheetLine.Text);
-                }
-            }
+            //TODO2024
+            //foreach (ChordsheetLine chordsheetLine in GetLines(chordsheetText))
+            //{
+            //    if (chordsheetLine.LineType == ChordsheetLineType.Stanza)
+            //    {
+            //        chordsheetStanzaLines.Add(chordsheetLine.Text);
+            //    }
+            //}
             return chordsheetStanzaLines;
         }
 
@@ -55,7 +56,7 @@ namespace Worshipmaker.Common.Music
             lineText = lineText.Trim();
 
             // Analyze each piece of the line passed in
-            string[] pieces = lineText.Split(null);
+            string[] pieces = lineText.Split(null); // TODO2024
             foreach (string piece in pieces)
             {
                 if (piece.Trim().Length > 0)
@@ -135,7 +136,7 @@ namespace Worshipmaker.Common.Music
         /// <returns></returns>
         private static bool IsPagebreak(string pieceText)
         {
-            if (pieceText.Trim().StartsWith("-----") || pieceText.Trim().StartsWith("~"))
+            if (pieceText.Trim().StartsWith("-----") || pieceText.Trim().StartsWith('~'))
             {
                 return true;
             }
