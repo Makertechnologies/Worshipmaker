@@ -35,6 +35,7 @@
         public static List<Organization> List()
         {
             var organizations = new List<Organization>();
+
             return organizations;
         }
 
